@@ -1,6 +1,7 @@
 import requests
 
 """
+hello
 response = requests.get("http://localhost:12345/card/7000123456780000")
 print(response)
 dataJson = response.json()
