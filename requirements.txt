@@ -1,4 +1,6 @@
 flask
 flask-restful
+PyMySQL
+bcrypt
 pytest
 gunicorn
