@@ -4,7 +4,7 @@ from logic.card_logic import CardLogic
 import bcrypt
 
 
-class Card(Resource):
+class CardVerify(Resource):
     def __init__(self):
         self.card_put_args = self.createParser()
         self.logic = CardLogic()

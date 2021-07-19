@@ -9,7 +9,7 @@ class PybaDatabase:
         self.password = "bfd94a1b"
         self.database = "heroku_0523c1b73d1d51e"
         """ self.host = "localhost"
-        self.port = 3306
+        self.port = 3307
         self.user = "root"
         self.password = "root"
         self.database = "thebank" """

@@ -1,15 +1,15 @@
 import requests
 
-"""
-hello
+
+
 response = requests.get("http://localhost:12345/card/7000123456780000")
 print(response)
 dataJson = response.json()
 print(dataJson)
-"""
 
 
-data = {
+
+""" data = {
     "name": "Erick Hernandez",
     "number": "7000123456780000",
     "date": "12/24",
@@ -23,7 +23,7 @@ if response.status_code == 200:
     if dataJson['response'] == '00':
         print(dataJson)
     else:
-        print(dataJson)
+        print(dataJson) """
 
 """
 data = {
