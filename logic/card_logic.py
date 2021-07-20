@@ -9,7 +9,7 @@ class CardLogic(PybaLogic):
     # get
     def getCardByNumber(self, number):
         database = self.createDatabaseObj()
-        sql = f"SELECT * FROM thebank.products where number= '{number}';"
+        sql = f"SELECT * FROM products where number= '{number}';"
         result = database.executeQuery(sql)
         if len(result) != 0:
             return result[0]
