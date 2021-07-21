@@ -44,19 +44,19 @@ if "2" in test:
             else:
                 print(dataJson)
 
-"""
-data = {
-    "name": "Erick Hernandez",
-    "number": "7000123456780000",
-    "date": "12/24",
-    "code": "182",
-    "balance": 0.00
-    "limit": 1000.00
-    "status": "Activa"
-}
-response = requests.put("http://localhost:12345/insert", data=data)
-print(response)
-if response.status_code == 200:
-    dataJson = response.json()
-    print(dataJson) 
-"""
+if "3" in test:
+    data = {
+        "name": "Erick Hernandez",
+        "number": "7000123456780000",
+        "date": "12/24",
+        "code": "182",
+        "balance": 0.00,
+        "limit": 1000.00,
+        "status": "Activa"
+    }
+    if "A" in test:
+        response = requests.put("http://localhost:12345/insert", data=data)
+        print(response)
+        if response.status_code == 200:
+            dataJson = response.json()
+            print(dataJson)
