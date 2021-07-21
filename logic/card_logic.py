@@ -31,10 +31,10 @@ class CardLogic(PybaLogic):
         strCode = hashCode.decode("utf-8")
 
         sql = (
-            f"INSERT INTO `thebank`.`products`"
-            + f"(`id`,`name`,`number`,`date`,`code`,`salt`,`balance`) "
-            + f"VALUES(0,'{card['name']}','{card['number']}','{card['date']}','{strCode}','{card['status']}' "
-            + f"'{strSalt}',{fBalance});"
+            f"INSERT INTO `products`"
+            + f"(`id`,`name`,`number`,`date`,`code`,`salt`,`balance`,`state`) "
+            + f"VALUES(0,'{card['name']}','{card['number']}','{card['date']}','{strCode}', "
+            + f"'{strSalt}',{fBalance},'{card['state']}');"
         )
         rows = database.executeNonQueryRows(sql)
         return rows
@@ -51,7 +51,7 @@ class CardLogic(PybaLogic):
         strCode = hashCode.decode("utf-8")
 
         sql = (
-            f"UPDATE `thebank`.`products` "
+            f"UPDATE `products` "
             + f"SET `name` = '{card['name']}',`date` = '{card['date']}',`code` = '{strCode}',"
             + f"`salt` = {strSalt},`balance` = {card['balance']},`status` = {card['status']},`limit` = {card['limit']} "
             + f"WHERE `number` = {number};"
@@ -61,7 +61,7 @@ class CardLogic(PybaLogic):
 
     def updateCardBalance(self, data):
         database = self.createDatabaseObj()
-        sql = f"SELECT * FROM thebank.products where number={data['number']};"
+        sql = f"SELECT * FROM products where number={data['number']};"
         result = database.executeQuery(sql)
         if len(result) != 0:
             cardDict = result[0]

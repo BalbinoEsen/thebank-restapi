@@ -18,7 +18,7 @@ class CardInsert(Resource):
         args.add_argument("salt", type=str, help="salt of the card")
         args.add_argument("balance", type=float, help="balance of the card")
         args.add_argument("limit", type=float, help="limit of the card")
-        args.add_argument("status", type=str, help="state of the card")
+        args.add_argument("state", type=str, help="state of the card")
         return args
 
     def get(self, number):
