@@ -34,10 +34,11 @@ class CardInsert(Resource):
         cardDict = self.logic.getCardByNumber(card['number'])
 
         if cardDict != {}:
-            
+
             if cardDict['status'] == "Activa":
+
                 if cardDict['name'] == card['name']:
-                    
+
                     if cardDict['date'] == card['date']:
 
                         code = card['code']
