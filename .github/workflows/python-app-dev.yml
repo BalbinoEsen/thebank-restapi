@@ -6,8 +6,8 @@ name: Credit Card Auth Api - Dev Workflow
 on:
   push:
     branches: [ development ]
-  pull_request:
-    branches: [ development ]
+  #pull_request:
+    #branches: [ development ]
 
 jobs:
   build:
