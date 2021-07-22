@@ -9,7 +9,7 @@ env = {
     "dev": "http://localhost:12345"
 }
 
-url = f"{env['dev']}{endpoint}"
+url = f"{env['prod']}{endpoint}"
 
 cardList = [
     {
