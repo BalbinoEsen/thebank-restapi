@@ -1,6 +1,7 @@
 import requests
+from logic.card_logic import CardLogic
 
-test="2B"
+test="4A"
 
 if "1" in test:
     if "A" in test:
@@ -60,3 +61,19 @@ if "3" in test:
         if response.status_code == 200:
             dataJson = response.json()
             print(dataJson)
+
+if "4" in test:
+    if "A" in test:
+        number = "7000123456780000"
+        card = {
+            "name": "Erick Hernandez",
+            "number": "7000123456780000",
+            "date": "12/24",
+            "code": "182",
+            "balance": 20.25,
+            "limit": 1000.00,
+            "state":"Activa"
+        }
+        logic = CardLogic()
+        rows = logic.updateCard(number, card)
+        print(f"rows affected: {rows}")
