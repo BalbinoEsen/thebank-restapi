@@ -27,4 +27,5 @@ class CardId(Resource):
         if len(result) == 0:
             return {}
         result['balance'] = str(result['balance'])
+        result['limit'] = str(result['limit'])
         return result, 200
