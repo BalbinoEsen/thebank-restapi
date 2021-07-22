@@ -1,7 +1,7 @@
 import requests
 from logic.card_logic import CardLogic
 
-test="4A"
+test="2A"
 
 if "1" in test:
     if "A" in test:
@@ -23,7 +23,9 @@ if "2" in test:
         "number": "7000123456780000",
         "date": "12/24",
         "code": "182",
-        "balance": 20.25
+        "balance": 20.25,
+        "limit": 1000.00,
+        "state": "Activa"
     }
     if "A" in test:
         response = requests.post("http://credit-card-auth-api-cerberus.herokuapp.com/verify", data=data)
