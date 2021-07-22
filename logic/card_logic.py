@@ -45,7 +45,7 @@ class CardLogic(PybaLogic):
     def updateCard(self, number, card):
         database = self.createDatabaseObj()
 
-        code = card['Code']
+        code = card['code']
         salt = bcrypt.gensalt(rounds=14)
         strSalt = salt.decode("utf-8")
         encCode = code.encode("utf-8")
@@ -53,10 +53,16 @@ class CardLogic(PybaLogic):
         strCode = hashCode.decode("utf-8")
 
         sql = (
-            f"UPDATE `products` "
-            + f"SET `name` = '{card['name']}',`date` = '{card['date']}',`code` = '{strCode}',"
-            + f"`salt` = {strSalt},`balance` = {card['balance']},`limit` = {card['limit']}, `state` = '{card['state']}' "
-            + f"WHERE `number` = {number};"
+            "UPDATE `products` "
+            + "SET "
+            + f"`name` = '{card['name']}', "
+            + f"`date` = '{card['date']}', "
+            + f"`code` = '{strCode}', "
+            + f"`salt` = '{strSalt}', "
+            + f"`balance` = {card['balance']}, "
+            + f"`limit` = {card['limit']}, "
+            + f"`state` = '{card['state']}' "
+            + f"WHERE `number` = {number}; "
         )
         rows = database.executeNonQueryRows(sql)
         return rows
