@@ -55,7 +55,7 @@ class CardLogic(PybaLogic):
         sql = (
             f"UPDATE `products` "
             + f"SET `name` = '{card['name']}',`date` = '{card['date']}',`code` = '{strCode}',"
-            + f"`salt` = {strSalt},`balance` = {card['balance']},`limit` = {card['limit']}, `state` = {card['state']} "
+            + f"`salt` = {strSalt},`balance` = {card['balance']},`limit` = {card['limit']}, `state` = '{card['state']}' "
             + f"WHERE `number` = {number};"
         )
         rows = database.executeNonQueryRows(sql)
