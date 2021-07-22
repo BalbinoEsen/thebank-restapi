@@ -1,6 +1,6 @@
 import requests
 
-test="1A"
+test="2B"
 
 if "1" in test:
     if "A" in test:
