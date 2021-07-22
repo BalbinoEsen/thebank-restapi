@@ -26,54 +26,5 @@ class CardId(Resource):
         result = logic.getCardByNumber(number)
         if len(result) == 0:
             return {}
-        result['balance'] = float(str(result['balance']))
+        result['balance'] = str(result['balance'])
         return result, 200
-
-    def post(self):
-        card = self.card_put_args.parse_args()
-        cardDict = self.logic.getCardByNumber(card['number'])
-
-        if cardDict != {}:
-            
-            if cardDict['status'] == "Activa":
-                if cardDict['name'] == card['name']:
-                    
-                    if cardDict['date'] == card['date']:
-
-                        code = card['code']
-                        salt = cardDict['salt'].encode("utf-8")
-                        strCode = code.encode("utf-8")
-                        hashPassword = bcrypt.hashpw(strCode, salt)
-                        dbPassword = cardDict['code'].encode("utf-8")
-
-                        if hashPassword == dbPassword:
-                            responseCode = self.logic.updateCardBalance(card)
-                        else:
-                            responseCode = "05" #Error de código
-                    else:
-                        responseCode = "54" #Error de fecha
-                else:
-                    responseCode = "08" #Error de nombre
-            else:
-                if cardDict['status'] == "Robada":
-                    responseCode = "43"
-                elif cardDict['status'] == "Perdida":
-                    responseCode = "41"
-                elif cardDict['status'] == "Inactiva":
-                    responseCode = "54"
-                else:
-                    responseCode = "QA"
-        else:
-            responseCode = "14" #Error Numero Tarjeta
-        #cardDict['balance'] = float(str(cardDict['balance']))
-        return {"response": responseCode}
-
-    def put(self):
-        card = self.card_put_args.parse_args()
-        rows = self.logic.insertCard(card)
-        return {"rowsAffected": rows}
-
-    def patch(self):
-        data = self.card_put_args.parse_args()
-        rows = self.logic.updateCardBalance(data)
-        return {"rowsAffected": rows}
