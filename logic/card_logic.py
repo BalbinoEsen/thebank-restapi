@@ -91,7 +91,7 @@ class CardLogic(PybaLogic):
             return "QY" #Tipo de Tarjeta Invalido
 
         sql = (
-            f"UPDATE `thebank`.`products` "
+            f"UPDATE `products` "
             + f"SET `balance` = {newBalance} "
             + f"WHERE `number` = {data['number']};"
         )
