@@ -1,7 +1,7 @@
 import requests
 from logic.card_logic import CardLogic
 
-test="1A"
+test="1B"
 
 if "1" in test:
     if "A" in test:
