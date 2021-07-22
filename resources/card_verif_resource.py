@@ -35,7 +35,7 @@ class CardVerify(Resource):
 
         if cardDict != {}:
 
-            if cardDict['status'] == "Activa":
+            if cardDict['state'] == "Activa":
                 if cardDict['name'] == card['name']:
 
                     if cardDict['date'] == card['date']:
@@ -55,11 +55,11 @@ class CardVerify(Resource):
                 else:
                     responseCode = "08" #Error de nombre
             else:
-                if cardDict['status'] == "Robada":
+                if cardDict['state'] == "Robada":
                     responseCode = "43"
-                elif cardDict['status'] == "Perdida":
+                elif cardDict['state'] == "Perdida":
                     responseCode = "41"
-                elif cardDict['status'] == "Inactiva":
+                elif cardDict['state'] == "Inactiva":
                     responseCode = "54"
                 else:
                     responseCode = "QA"

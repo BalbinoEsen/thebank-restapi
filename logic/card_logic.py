@@ -22,6 +22,8 @@ class CardLogic(PybaLogic):
 
         strBalance = card['balance']
         fBalance = float(strBalance)
+        strLimit = card['limit']
+        fLimit = float(strLimit)
 
         code = card['code']
         salt = bcrypt.gensalt(rounds=14)
@@ -32,9 +34,9 @@ class CardLogic(PybaLogic):
 
         sql = (
             f"INSERT INTO `products`"
-            + f"(`id`,`name`,`number`,`date`,`code`,`salt`,`balance`,`state`) "
+            + f"(`id`,`name`,`number`,`date`,`code`,`salt`,`balance`,`limit`,`state`) "
             + f"VALUES(0,'{card['name']}','{card['number']}','{card['date']}','{strCode}', "
-            + f"'{strSalt}',{fBalance},'{card['state']}');"
+            + f"'{strSalt}',{fBalance},{fLimit},'{card['state']}');"
         )
         rows = database.executeNonQueryRows(sql)
         return rows
@@ -53,7 +55,7 @@ class CardLogic(PybaLogic):
         sql = (
             f"UPDATE `products` "
             + f"SET `name` = '{card['name']}',`date` = '{card['date']}',`code` = '{strCode}',"
-            + f"`salt` = {strSalt},`balance` = {card['balance']},`status` = {card['status']},`limit` = {card['limit']} "
+            + f"`salt` = {strSalt},`balance` = {card['balance']},`limit` = {card['limit']}, `state` = {card['state']} "
             + f"WHERE `number` = {number};"
         )
         rows = database.executeNonQueryRows(sql)
