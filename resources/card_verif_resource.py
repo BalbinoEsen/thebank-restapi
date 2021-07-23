@@ -51,7 +51,7 @@ class CardVerify(Resource):
                         else:
                             responseCode = "05" #Error de código
                     else:
-                        responseCode = "54" #Error de fecha
+                        responseCode = "07" #Error de fecha
                 else:
                     responseCode = "08" #Error de nombre
             else:
